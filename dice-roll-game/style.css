@@ -1,0 +1,67 @@
+body{
+margin: 0%;
+padding: 0%;
+font-family: Arial, Helvetica, sans-serif;
+background-color: black;
+    
+
+}
+
+
+h1{
+    text-align: center;
+    margin-top: 30px;
+    color: gray;
+}
+
+#dice{
+    width: 40%;
+    max-width: 150px;
+    margin-left: 630px;
+    display: block;
+        transition: transform 0.5s ease;
+        margin: 30px auto;
+}
+
+
+#button{
+
+margin-top: 30px; /* button ka top margin */
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    display: block; /* block banaya taake margin-top work kare */
+    margin-left: auto; /* center align */
+    margin-right: auto; /* center align */
+    transition: background-color 0.2s;
+
+    width: 50%;
+    max-width: 120px;
+    padding: 10px;
+    margin: 20px auto;
+
+}
+
+
+
+#button:hover {
+    background-color: #45a049;
+}
+
+
+/* Dice rolling animation */
+@keyframes roll {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(90deg); }
+    50%  { transform: rotate(180deg); }
+    75%  { transform: rotate(270deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.roll {
+    animation: roll 0.5s ease;
+}
