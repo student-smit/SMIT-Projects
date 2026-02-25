@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App - Home</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        float: "float 6s ease-in-out infinite"
+                    },
+                    keyframes: {
+                        float: {
+                            "0%, 100%": { transform: "translateY(0px)" },
+                            "50%": { transform: "translateY(-15px)" }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-200 via-rose-300 to-amber-100">
+
+    <div class="backdrop-blur-md bg-white/40 border border-white/50 shadow-xl rounded-[2rem] p-10 w-[90%] max-w-xl text-center animate-float">
+
+        <h1 class="text-3xl sm:text-4xl font-black text-rose-600 mb-10 tracking-tight">
+            ✨ Choose Your Path ✨
+        </h1>
+
+        <div class="flex flex-col sm:flex-row gap-5 justify-center">
+
+            <button id="htmlbtn"
+                class="bg-rose-400 hover:bg-rose-500 text-white font-bold py-4 px-8 rounded-2xl shadow-md transition duration-300 transform hover:scale-105">
+                HTML
+            </button>
+
+            <button id="cssbtn"
+                class="bg-indigo-300 hover:bg-indigo-400 text-white font-bold py-4 px-8 rounded-2xl shadow-md transition duration-300 transform hover:scale-105">
+                CSS
+            </button>
+
+            <button id="jsbtn"
+                class="bg-amber-300 hover:bg-amber-400 text-amber-900 font-bold py-4 px-8 rounded-2xl shadow-md transition duration-300 transform hover:scale-105">
+                JavaScript
+            </button>
+
+        </div>
+
+    </div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
