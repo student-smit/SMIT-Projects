@@ -16,7 +16,6 @@ let labelD = document.getElementById('labelD')
 let nextbtn = document.getElementById('nextBtn')
 let inp = document.getElementsByTagName('input')
 
-let selectedOpt = '';
 let quizArray;
 let index = 0;
 let score = 0;
@@ -39,42 +38,51 @@ jsbtn?.addEventListener('click' ,function () {
 })
 
 let startQuiz = () => {
-     let  selectedQuiz = localStorage.getItem('selectedQuiz')
+    let  selectedQuiz = localStorage.getItem('selectedQuiz')
     //  console.log(selectedQuiz);
     if(selectedQuiz === 'html'){
-      quizArray = htmlData;
+        quizArray = htmlData;
     }
     else if(selectedQuiz === 'css'){
         quizArray = cssData ;
     }
-     else if(selectedQuiz === 'js'){
+    else if(selectedQuiz === 'js'){
         quizArray = jsData ;
     }
-
+    
     let showQuestion = ()=>{
-       quest.innerHTML = quizArray[index].question;
-       labelA.textContent = quizArray[index].A;
-       labelB.textContent = quizArray[index].B;
-       labelC.textContent = quizArray[index].C;
-       labelD.textContent = quizArray[index].D;
-
-       for( let i = 0; i < inp.length ; i++){
-         inp[i].checked = false;
-       }
+        quest.innerHTML = quizArray[index].question;
+        labelA.textContent = quizArray[index].A;
+        labelB.textContent = quizArray[index].B;
+        labelC.textContent = quizArray[index].C;
+        labelD.textContent = quizArray[index].D;
+        
+        for( let i = 0; i < inp.length ; i++){
+            inp[i].checked = false;
+        }
     }
-
-
+    
+    
     showQuestion()
-
+    
     nextbtn.addEventListener('click' , () =>{
-     for( let i = 0 ; i < inp.length ; i++){
-        if(inp[i].type === 'radio' && inp[i].name === 'option' && inp[i].checked){
+
+        let selectedOpt = '';
+        for( let i = 0 ; i < inp.length ; i++){
+            if(inp[i].type === 'radio' && inp[i].name === 'option' && inp[i].checked){
+                
             // console.log('inp[i]' , inp[i])
             
                selectedOpt =  inp[i].value 
         }
     }
 
+     
+    if(selectedOpt == ''){
+        alert('please select an option');
+        return;
+    }
+    
      
     
     if(selectedOpt === quizArray[index].answer){
@@ -85,11 +93,7 @@ let startQuiz = () => {
 
     
     index++
-    
-    if(selectedOpt == ''){
-        alert('please select an option');
-    }
-    
+   
       
         if(index < quizArray.length ){
           showQuestion()
@@ -100,7 +104,7 @@ let startQuiz = () => {
     const quizContainer = quest.parentElement; 
 
     quizContainer.innerHTML = `
-        <div class="text-center py-6">
+       <div class="text-center py-6">
             <h1 class="text-4xl font-extrabold text-indigo-900 mb-4 animate-bounce">
                 🎉 Quiz Completed!
             </h1>
@@ -112,12 +116,20 @@ let startQuiz = () => {
             </div>
 
             <button onclick="window.location.reload()" 
-                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full shadow-lg transform transition hover:scale-105 active:scale-95 uppercase tracking-wider">
+                class=" w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full shadow-lg transform transition hover:scale-105 active:scale-95 uppercase tracking-wider">
                 🔄 Restart Quiz
             </button>
+
+            <button onclick="window.location.href='home.html'" 
+                    class=" w-full sm:w-auto mt-2 bg-rose-500 hover:bg-rose-600 text-white font-bold py-4 px-10 rounded-full shadow-lg transform transition hover:scale-105 active:scale-95 uppercase tracking-wider ">
+                    🏠 Go to Home
+                </button>
+
+            
         </div>
     `;
 }
+
 
 
     })
