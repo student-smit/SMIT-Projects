@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes shine { 0% { left: -100%; } 100% { left: 100%; } }
+    .vip-button:hover::after {
+      content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: skewX(-25deg); animation: shine 0.5s;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-[#0f172a] flex items-center justify-center p-6">
+
+  <div class="relative group">
+    <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-[2.5rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+    
+    <div class="relative bg-[#1e293b]/80 backdrop-blur-xl border border-white/10 p-7 rounded-[2.5rem] shadow-2xl w-80">
+      
+      <div class="mb-6">
+        <input type="text" id="inp" readonly
+          class="w-full h-24 text-right text-4xl font-light bg-black/20 border-b border-white/5 rounded-2xl px-5 text-cyan-400 placeholder-slate-700 shadow-inner focus:outline-none tracking-wider"
+          placeholder="0">
+      </div>
+
+      <div class="grid grid-cols-4 gap-4">
+        
+        <button onclick="reset()" class="col-span-2 h-14 bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 font-bold rounded-2xl border border-rose-500/20 transition-all active:scale-95">AC</button>
+        <button onclick="calculate('/')" class="h-14 bg-slate-700/50 hover:bg-slate-700 text-cyan-400 font-bold rounded-2xl border border-white/5 transition-all active:scale-95">/</button>
+        <button onclick="calculate('*')" class="h-14 bg-slate-700/50 hover:bg-slate-700 text-cyan-400 font-bold rounded-2xl border border-white/5 transition-all active:scale-95">×</button>
+
+        <button onclick="calculate(7)" class="h-14 bg-white/5 hover:bg-white/10 text-slate-300 font-medium rounded-2xl border border-white/5 transition-all active:scale-90">7</button>
+        <button onclick="calculate(8)" class="h-14 bg-white/5 hover:bg-white/10 text-slate-300 font-medium rounded-2xl border border-white/5 transition-all active:scale-90">8</button>
+        <button onclick="calculate(9)" class="h-14 bg-white/5 hover:bg-white/10 text-slate-300 font-medium rounded-2xl border border-white/5 transition-all active:scale-90">9</button>
+        <button onclick="calculate('-')" class="h-14 bg-slate-700/50 hover:bg-slate-700 text-cyan-400 font-bold rounded-2xl border border-white/5 transition-all active:scale-95">-</button>
+
+        <button onclick="calculate(4)" class="h-14 bg-white/5 hover:bg-white/10 text-slate-300 font-medium rounded-2xl border border-white/5 transition-all active:scale-90">4</button>
+        <button onclick="calculate(5)" class="h-14 bg-white/5 hover:bg-white/10 text-slate-300 font-medium rounded-2xl border border-white/5 transition-all active:scale-90">5</button>
+        <button onclick="calculate(6)" class="h-14 bg-white/5 hover:bg-white/10 text-slate-300 font-medium rounded-2xl border border-white/5 transition-all active:scale-90">6</button>
+        <button onclick="calculate('+')" class="h-14 bg-slate-700/50 hover:bg-slate-700 text-cyan-400 font-bold rounded-2xl border border-white/5 transition-all active:scale-95">+</button>
+
+        <button onclick="calculate(1)" class="h-14 bg-white/5 hover:bg-white/10 text-slate-300 font-medium rounded-2xl border border-white/5 transition-all active:scale-90">1</button>
+        <button onclick="calculate(2)" class="h-14 bg-white/5 hover:bg-white/10 text-slate-300 font-medium rounded-2xl border border-white/5 transition-all active:scale-90">2</button>
+        <button onclick="calculate(3)" class="h-14 bg-white/5 hover:bg-white/10 text-slate-300 font-medium rounded-2xl border border-white/5 transition-all active:scale-90">3</button>
+        
+        <button onclick="equal()" class="row-span-2 h-auto bg-gradient-to-b from-cyan-500 to-purple-600 text-white font-black rounded-2xl shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all hover:brightness-125 active:scale-95">=</button>
+
+        <button onclick="calculate(0)" class="col-span-2 h-14 bg-white/5 hover:bg-white/10 text-slate-300 font-medium rounded-2xl border border-white/5 transition-all active:scale-90">0</button>
+        <button onclick="calculate('.')" class="h-14 bg-white/5 hover:bg-white/10 text-slate-300 font-medium rounded-2xl border border-white/5 transition-all active:scale-90">.</button>
+
+      </div>
+    </div>
+  </div>
+
+
+   <script src="app.js"></script>
+</body>
+</html>
